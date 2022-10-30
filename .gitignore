@@ -1,1 +1,7 @@
-fdf
+obj
+*/libft.a
+*/obj
+a.out
+*/*.o
+*/*/*/.o
+.vscode

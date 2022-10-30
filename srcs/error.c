@@ -1,24 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asanotomoki <asanotomoki@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/11 09:38:09 by asanotomoki       #+#    #+#             */
-/*   Updated: 2022/10/30 18:12:47 by asanotomoki      ###   ########.fr       */
+/*   Created: 2022/10/13 17:02:45 by asanotomoki       #+#    #+#             */
+/*   Updated: 2022/10/18 18:12:33 by asanotomoki      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+#include <errno.h>
+#include <stdio.h>
 
-int	main(int argc, char **argv)
+void err_msg(char *msg, int status)
 {
-	if (argc != 2)
-		err_msg(ERR_ARG, EX_USAGE);
-	argv++;
-	if (!*argv || !*argv[0])
-		err_msg(ERR_ARG, EX_USAGE);
-	fdf(*argv);
-	return (0);
+	ft_putendl_fd(msg, 2);
+	exit(status);
+}
+
+void perror_exit(char *msg, int status)
+{
+	perror(msg);
+	exit(status);
 }

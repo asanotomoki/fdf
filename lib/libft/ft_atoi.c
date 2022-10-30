@@ -1,24 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asanotomoki <asanotomoki@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/11 09:38:09 by asanotomoki       #+#    #+#             */
-/*   Updated: 2022/10/30 18:12:47 by asanotomoki      ###   ########.fr       */
+/*   Created: 2021/10/14 14:14:26 by tasano            #+#    #+#             */
+/*   Updated: 2022/10/29 07:16:40 by asanotomoki      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+int	ft_atoi(const char *str)
 {
-	if (argc != 2)
-		err_msg(ERR_ARG, EX_USAGE);
-	argv++;
-	if (!*argv || !*argv[0])
-		err_msg(ERR_ARG, EX_USAGE);
-	fdf(*argv);
-	return (0);
+	return (ft_strtol(str, NULL, 10));
 }

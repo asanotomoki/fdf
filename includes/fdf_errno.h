@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   fdf_errno.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asanotomoki <asanotomoki@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/11 09:38:09 by asanotomoki       #+#    #+#             */
-/*   Updated: 2022/10/30 18:12:47 by asanotomoki      ###   ########.fr       */
+/*   Created: 2022/10/13 17:08:56 by asanotomoki       #+#    #+#             */
+/*   Updated: 2022/10/13 17:24:05 by asanotomoki      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#ifndef FDF_ERRNO
+# define FDF_ERRNO
 
-int	main(int argc, char **argv)
-{
-	if (argc != 2)
-		err_msg(ERR_ARG, EX_USAGE);
-	argv++;
-	if (!*argv || !*argv[0])
-		err_msg(ERR_ARG, EX_USAGE);
-	fdf(*argv);
-	return (0);
-}
+# include <sysexits.h>
+
+# define ERR_ARG "ERROR\nUsage : ./fdf <filename>"
+# define ERR_MAP "ERROR"
+
+
+# endif

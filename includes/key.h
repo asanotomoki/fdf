@@ -1,24 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   key.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asanotomoki <asanotomoki@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/11 09:38:09 by asanotomoki       #+#    #+#             */
-/*   Updated: 2022/10/30 18:12:47 by asanotomoki      ###   ########.fr       */
+/*   Created: 2022/10/30 16:47:19 by asanotomoki       #+#    #+#             */
+/*   Updated: 2022/10/30 17:42:02 by asanotomoki      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
 
-int	main(int argc, char **argv)
-{
-	if (argc != 2)
-		err_msg(ERR_ARG, EX_USAGE);
-	argv++;
-	if (!*argv || !*argv[0])
-		err_msg(ERR_ARG, EX_USAGE);
-	fdf(*argv);
-	return (0);
-}
+#ifndef KEY_H
+# define KEY_H
+
+
+# define B_PLUS 41
+# define B_MINUS 27
+# define B_LEFT 123
+# define B_RIGHT 124
+# define B_DOWN 125
+# define B_UP 	126
+# define B_ESC 53
+# define B_X 7
+
+# endif

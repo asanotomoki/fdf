@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   fdf->c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asanotomoki <asanotomoki@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/11 09:38:09 by asanotomoki       #+#    #+#             */
-/*   Updated: 2022/10/30 18:12:47 by asanotomoki      ###   ########.fr       */
+/*   Created: 2022/10/13 17:28:44 by asanotomoki       #+#    #+#             */
+/*   Updated: 2022/10/17 15:51:18 by asanotomoki      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int	main(int argc, char **argv)
+int fdf(char *argv)
 {
-	if (argc != 2)
-		err_msg(ERR_ARG, EX_USAGE);
-	argv++;
-	if (!*argv || !*argv[0])
-		err_msg(ERR_ARG, EX_USAGE);
-	fdf(*argv);
+	t_fdf fdf;
+
+	fdf_init(&fdf, argv);
+	draw(&fdf);
+	hooks(&fdf);
+	mlx_loop(&fdf.mlx);
 	return (0);
 }

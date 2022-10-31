@@ -6,7 +6,7 @@
 #    By: asanotomoki <asanotomoki@student.42.fr>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/15 20:24:47 by asanotomoki       #+#    #+#              #
-#    Updated: 2022/10/31 16:44:35 by asanotomoki      ###   ########.fr        #
+#    Updated: 2022/10/31 19:45:30 by asanotomoki      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ ifeq ($(shell uname), Darwin)
 else
 	MLX_DIR		:=	./lib/minilibx-linux
 	LIBMLX		:=	$(MLX_DIR)/libmlx_Linux.a
-	LXFLAGS		:=	-lXext -lX11 -lm
+	LXFLAGS		:=	-lft -lm -L/usr/X11R6/lib -lmlx -lXext -framework OpenGL -framework AppKit
 endif
 
 HEADERS :=  ./includes $(LIBFTDIR)/includes/ $(MLX_DIR)/

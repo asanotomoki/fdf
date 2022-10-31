@@ -6,54 +6,46 @@
 /*   By: asanotomoki <asanotomoki@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 19:30:43 by asanotomoki       #+#    #+#             */
-/*   Updated: 2022/10/30 18:04:03 by asanotomoki      ###   ########.fr       */
+/*   Updated: 2022/10/31 14:22:17 by asanotomoki      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include "key.h"
 
-int close_program()
+int	close_program(void)
 {
 	exit(EXIT_SUCCESS);
 }
 
-void shift(t_fdf *fdf, int key)
-{
-	// if (key == B_UP)
-	// 	fdf->camera->shift_y += 50;
-	// else if (key == B_DOWN)
-	// 	fdf->camera->shift_y -= 50;
-	// else if (key == B_LEFT)
-	// 	fdf->camera->shift_x -= 50;
-	// else if (key == B_RIGHT)
-	// 	fdf->camera->shift_x -= 50;
-	printf("key : %d %d\n", key, fdf->camera->shift_x);
-	// draw(fdf);
-}
-
 int	key_hooks(int key, t_fdf *fdf)
 {
-	if (key == B_ESC || key == B_X)
+	if (key == KEY_ESC || key == KEY_X)
 		close_program();
-	else if (B_LEFT <= key || key <= B_UP)
+	else if (KEY_LEFT <= key && key <= KEY_UP)
 		shift(fdf, key);
+	else if (key == KEY_PLUS || key == KEY_MINUS)
+		zoom(fdf, key);
+	else if (key == KEY_P || key == KEY_I)
+		mode(fdf, key);
+	else if (key == KEY_LESS || key == KEY_MORE)
+		background(fdf, key);
 	return (0);
 }
 
-int mouse_hooks(int keycode, t_fdf *fdf)
+int	mouse_hooks(int key, int x, int y, t_fdf *fdf)
 {
-	if (keycode)
-		printf("%d\n", keycode);
-	else
-		fdf->map->height = 1;
+	x = y;
+	y = x;
+	if (key == MOUSE_DOWN || key == MOUSE_UP)
+		zoom(fdf, key);
 	return (0);
 }
 
-int hooks(t_fdf *fdf)
+int	hooks(t_fdf *fdf)
 {
-	mlx_key_hook(fdf->mlx_win, key_hooks, &fdf);
-	// mlx_mouse_hook(fdf->mlx_win, mouse_hooks, &fdf);
-	mlx_hook(fdf->mlx_win, 17, 1L<<17, close_program, &fdf);
+	mlx_key_hook(fdf->mlx_win, key_hooks, fdf);
+	mlx_mouse_hook(fdf->mlx_win, mouse_hooks, fdf);
+	mlx_hook(fdf->mlx_win, 17, 1L << 17, close_program, fdf);
 	return (0);
 }

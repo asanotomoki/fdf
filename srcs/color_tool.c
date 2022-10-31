@@ -6,13 +6,13 @@
 /*   By: asanotomoki <asanotomoki@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 18:09:30 by asanotomoki       #+#    #+#             */
-/*   Updated: 2022/10/30 18:09:43 by asanotomoki      ###   ########.fr       */
+/*   Updated: 2022/10/31 03:59:58 by asanotomoki      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-float get_percent(int from, int to, int current)
+float	get_percent(int from, int to, int current)
 {
 	float	position;
 	float	distance;
@@ -25,11 +25,11 @@ float get_percent(int from, int to, int current)
 		return (position / distance);
 }
 
-int	get_color(t_fdf *fdf, t_point p)
+int	get_color(t_map *map, t_point p)
 {
-	float percent;
+	float	percent;
 
-	percent = get_percent(fdf->map->z_min, fdf->map->z_max, p.z);
+	percent = get_percent(map->z_min, map->z_max, p.z);
 	if (percent < 0.15)
 		return (PURPLE);
 	else if (percent < 0.25)
@@ -55,12 +55,12 @@ int	get_rgb(int start, int end, float percent)
 	return ((end - start) * percent + start);
 }
 
-int cal_color(t_point p, t_point from, t_point to, t_point delta)
+int	cal_color(t_point p, t_point from, t_point to, t_point delta)
 {
-	float percent;
-	int red;
-	int green;
-	int blue;
+	float	percent;
+	int		red;
+	int		green;
+	int		blue;
 
 	if (p.color == to.color)
 		return (p.color);

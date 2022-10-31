@@ -6,17 +6,31 @@
 /*   By: asanotomoki <asanotomoki@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 18:06:13 by asanotomoki       #+#    #+#             */
-/*   Updated: 2022/10/30 18:27:46 by asanotomoki      ###   ########.fr       */
+/*   Updated: 2022/10/31 14:14:12 by asanotomoki      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void bresenham(t_point from, t_point to, t_fdf *fdf)
+void	draw_background(t_fdf *fdf, int color)
 {
-	t_point delta;
+	int	i;
+	int	*image_addr;
+
+	image_addr = (int *)(fdf->img.addr);
+	i = 0;
+	while (i < WINDOW_HEIGHT * WINDOW_WIDTH)
+	{
+		image_addr[i] = color;
+		i++;
+	}
+}
+
+void	bresenham(t_point from, t_point to, t_fdf *fdf)
+{
+	t_point	delta;
 	t_point	p;
-	int error[2];
+	int		error[2];
 
 	delta = get_delta(from, to);
 	error[0] = delta.x - delta.y;
@@ -27,23 +41,30 @@ void bresenham(t_point from, t_point to, t_fdf *fdf)
 		error[1] = 2 * error[0];
 		if (error[1] > -delta.y)
 		{
-			p.x += 1;
+			p.x += 2 * (from.x < to.x) - 1;
 			error[0] -= delta.y;
 		}
 		if (error[1] < delta.x)
 		{
-			p.y += 1;
+			p.y += 2 * (from.y < to.y) - 1;
 			error[0] += delta.x;
 		}
 	}
 }
 
-t_point projection(t_fdf *fdf, t_point p)
+t_point	projection(t_fdf *fdf, t_point p)
 {
+	t_point	tmp;
+
 	p.x *= fdf->camera->zoom;
 	p.y *= fdf->camera->zoom;
-	if (p.color == -1)
-		p.color = get_color(fdf, p);
+	p.z *= fdf->camera->zoom;
+	if (fdf->camera->mode == ISO)
+	{
+		tmp = p;
+		p.x = (tmp.x - tmp.y) * cos(0.4);
+		p.y = (tmp.x + tmp.y) * sin(0.4) - tmp.z;
+	}
 	p.x += fdf->camera->shift_x;
 	p.y += fdf->camera->shift_y;
 	return (p);
@@ -54,6 +75,7 @@ void	draw(t_fdf *fdf)
 	int	x;
 	int	y;
 
+	draw_background(fdf, fdf->camera->background);
 	y = 0;
 	while (y < fdf->map->height)
 	{

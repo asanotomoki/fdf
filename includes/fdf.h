@@ -6,7 +6,7 @@
 /*   By: asanotomoki <asanotomoki@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 15:43:45 by asanotomoki       #+#    #+#             */
-/*   Updated: 2022/10/30 18:26:54 by asanotomoki      ###   ########.fr       */
+/*   Updated: 2022/10/31 14:33:14 by asanotomoki      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,28 +16,17 @@
 # include "fdf_errno.h"
 # include "libft.h"
 # include "mlx.h"
+# include "color.h"
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
 # include <math.h>
 #include <stdio.h>
 
-# define WINDOW_WIDTH 1200
-# define WINDOW_HEIGHT 640
-
-# define PURPLE 0x392270
-# define RIGHT_PURPLE 0xba55d3
-# define BLUE 0x4169e1
-# define RIGHT_BLUE 0x5de8e5
-# define GREEN 0x7fffd4
-# define YELLOW 0xffd700
-# define ORANGE 0xf4a460
-# define PINK 0xf44d9b
-# define RED 0xc71585
-# define RIGHT_RED 0xe9275b
-# define WHITE 0xffffff
-# define BLACK 0x101010
-# define GRAY 0x888888
+# define WINDOW_WIDTH 1440
+# define WINDOW_HEIGHT 800
+# define ISO 1
+# define PAR 0
 
 typedef struct s_point
 {
@@ -67,6 +56,8 @@ typedef struct s_camera
 	int	zoom;
 	int shift_x;
 	int shift_y;
+	int mode;
+	int background;
 } t_camera;
 
 typedef	struct s_map
@@ -96,9 +87,10 @@ void	draw(t_fdf *fdf);
 t_point	get_delta(t_point from, t_point to);
 void	my_mlx_pixel_put(t_fdf *fdf, int x, int y, int color);
 void 	put_string(t_fdf *fdf);
+void	draw_background(t_fdf *fdf, int color);
 
 //init
-void fdf_init(t_fdf *fdf, char *filename);
+t_fdf *fdf_init(char *filename);
 
 //error
 void err_msg(char *msg, int status);
@@ -107,14 +99,26 @@ void perror_exit(char *msg, int status);
 //hooks
 int	hooks(t_fdf	*fdf);
 
-//create_map
-void create_map(char *file_name, t_fdf *fdf);
+void	shift(t_fdf *fdf, int key);
+void	zoom(t_fdf *fdf, int key);
+void	mode(t_fdf *fdf, int key);
+void	background(t_fdf *fdf, int key);
 
-//check_map
-void	check_map(int fd, t_fdf *fdf);
+//create_map
+void	create_map(char *file_name, t_map *map);
+void	chenge_array(t_map *map, t_maplst *maplst);
+void	z_minmax(t_map *map, int z);
+void	free_all(char **args);
+void	malloc_array(t_map *map, int width, int height);
+void	check_width(t_map *map, int x);
+
+//maplst
+t_maplst *map_new_data(int x, int y, int z, int color);
+t_maplst	*map_lstlast(t_maplst *lst);
+void	map_add_back(t_maplst *lst, t_maplst *new);
 
 //color_tool
-int	get_color(t_fdf *fdf, t_point p);
+int	get_color(t_map *map, t_point p);
 int cal_color(t_point p, t_point from, t_point to, t_point delta);
 
 # endif

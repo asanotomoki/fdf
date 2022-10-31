@@ -6,7 +6,7 @@
 /*   By: asanotomoki <asanotomoki@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 19:54:36 by asanotomoki       #+#    #+#             */
-/*   Updated: 2022/10/21 15:09:51 by asanotomoki      ###   ########.fr       */
+/*   Updated: 2022/10/31 04:09:33 by asanotomoki      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <errno.h>
 #include <stdio.h>
 
-void gnl_perror_exit(char *msg, int status)
+void	gnl_perror_exit(char *msg, int status)
 {
 	perror(msg);
 	exit(status);

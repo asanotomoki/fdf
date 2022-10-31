@@ -6,7 +6,7 @@
 #    By: asanotomoki <asanotomoki@student.42.fr>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/15 20:24:47 by asanotomoki       #+#    #+#              #
-#    Updated: 2022/10/31 14:40:11 by asanotomoki      ###   ########.fr        #
+#    Updated: 2022/10/31 16:43:18 by asanotomoki      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,9 +72,4 @@ fclean:	clean
 
 re: fclean all
 
-test : all
-		./fdf test_maps/42.fdf
-retest : re
-		./fdf test_maps/42.fdf
-
-.PHONY: all bonus fclean clean re test retest
+.PHONY: all bonus fclean clean re

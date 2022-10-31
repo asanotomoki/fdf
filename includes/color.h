@@ -6,10 +6,9 @@
 /*   By: asanotomoki <asanotomoki@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 04:34:52 by asanotomoki       #+#    #+#             */
-/*   Updated: 2022/10/31 04:35:26 by asanotomoki      ###   ########.fr       */
+/*   Updated: 2022/10/31 15:48:17 by asanotomoki      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef COLOR_H
 # define COLOR_H
@@ -28,4 +27,4 @@
 # define BLACK 0x000000
 # define GRAY 0x888888
 
-# endif
+#endif

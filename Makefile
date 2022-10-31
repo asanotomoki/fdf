@@ -6,7 +6,7 @@
 #    By: asanotomoki <asanotomoki@student.42.fr>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/15 20:24:47 by asanotomoki       #+#    #+#              #
-#    Updated: 2022/10/31 16:43:18 by asanotomoki      ###   ########.fr        #
+#    Updated: 2022/10/31 16:44:35 by asanotomoki      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ LIBFTDIR := ./lib/libft
 OBJDIR   := ./obj
 SRC_DIR := ./srcs
 CC  := cc
-CFLAGS := -Wall -Werror -Wextra -g -fsanitize=address -fsanitize=integer -fsanitize=undefined
+CFLAGS := -Wall -Werror -Wextra
 
 ifeq ($(shell uname), Darwin)
 	MLX_DIR		:=	./lib/minilibx_macos

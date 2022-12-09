@@ -6,7 +6,7 @@
 /*   By: asanotomoki <asanotomoki@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 18:06:13 by asanotomoki       #+#    #+#             */
-/*   Updated: 2022/10/31 14:14:12 by asanotomoki      ###   ########.fr       */
+/*   Updated: 2022/11/01 22:31:27 by asanotomoki      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,8 @@ t_point	projection(t_fdf *fdf, t_point p)
 	if (fdf->camera->mode == ISO)
 	{
 		tmp = p;
-		p.x = (tmp.x - tmp.y) * cos(0.4);
-		p.y = (tmp.x + tmp.y) * sin(0.4) - tmp.z;
+		p.x = (tmp.x - tmp.y) * cos(0.5);
+		p.y = (tmp.x + tmp.y) * sin(0.5) - tmp.z;
 	}
 	p.x += fdf->camera->shift_x;
 	p.y += fdf->camera->shift_y;

@@ -6,7 +6,7 @@
 /*   By: asanotomoki <asanotomoki@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 16:47:19 by asanotomoki       #+#    #+#             */
-/*   Updated: 2022/10/31 16:52:26 by asanotomoki      ###   ########.fr       */
+/*   Updated: 2022/11/01 14:31:04 by asanotomoki      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,5 @@
 #  define KEY_LESS		44
 #  define KEY_MORE		46
 # endif
+
 #endif

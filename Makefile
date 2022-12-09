@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: asanotomoki <asanotomoki@student.42.fr>    +#+  +:+       +#+         #
+#    By: tasano <tasano@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/15 20:24:47 by asanotomoki       #+#    #+#              #
-#    Updated: 2022/10/31 21:03:01 by asanotomoki      ###   ########.fr        #
+#    Updated: 2022/12/09 16:48:17 by tasano           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,4 +72,9 @@ fclean:	clean
 
 re: fclean all
 
-.PHONY: all bonus fclean clean re
+norm:
+	norminette $(SRC_DIR)
+	norminette $(LIBFTDIR)
+	norminette ./includes $(LIBFTDIR)/includes
+
+.PHONY: all bonus fclean clean re norm
